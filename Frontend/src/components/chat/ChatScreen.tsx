@@ -18,6 +18,7 @@ import {
   getAudioLevel, stopAudioAnalysis, stopSpeechRecognition,
 } from '@/lib/speech';
 import dynamic from 'next/dynamic';
+import { useTheme } from 'next-themes';
 
 const AIOrb = dynamic(() => import('@/components/orb/AIOrb'), { ssr: false });
 
@@ -52,6 +53,11 @@ export default function ChatScreen() {
   const [isListening, setIsListening] = useState(false);
   const [audioLevel, setAudioLevel] = useState(0);
   const [uploadedImages, setUploadedImages] = useState<string[]>([]);
+  const [chatMounted, setChatMounted] = useState(false);
+  const { resolvedTheme } = useTheme();
+  const isDark = chatMounted ? resolvedTheme === 'dark' : false;
+
+  useEffect(() => { setChatMounted(true); }, []);
   const [artStep, setArtStep] = useState(-1);
   const [artAnswers, setArtAnswers] = useState<Record<string, string>>({});
   const [suggestionIdx, setSuggestionIdx] = useState(0);
@@ -240,7 +246,14 @@ export default function ChatScreen() {
       </motion.aside>
 
       {/* Main chat */}
-      <div className="flex-1 flex flex-col relative">
+      <div className="flex-1 flex flex-col relative overflow-hidden">
+        {/* Warm gradient background */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <div className="absolute w-[500px] h-[500px] rounded-full" style={{ top: '-15%', right: '-10%', background: 'radial-gradient(circle, ' + (isDark ? 'rgba(245,158,11,0.08)' : 'rgba(252,211,77,0.35)') + ' 0%, transparent 70%)', filter: 'blur(90px)' }} />
+          <div className="absolute w-[400px] h-[400px] rounded-full" style={{ top: '50%', left: '-5%', background: 'radial-gradient(circle, ' + (isDark ? 'rgba(217,119,6,0.06)' : 'rgba(245,158,11,0.25)') + ' 0%, transparent 70%)', filter: 'blur(80px)' }} />
+          <div className="absolute w-[350px] h-[350px] rounded-full" style={{ bottom: '-10%', right: '20%', background: 'radial-gradient(circle, ' + (isDark ? 'rgba(180,83,9,0.05)' : 'rgba(251,191,36,0.25)') + ' 0%, transparent 70%)', filter: 'blur(70px)' }} />
+        </div>
+
         {/* Voice mode overlay */}
         <AnimatePresence>
           {isVoiceMode && (
@@ -277,6 +290,7 @@ export default function ChatScreen() {
             </h2>
           </div>
           <div className="flex items-center gap-2">
+            <ThemeToggle />
             {conv?.preview && (
               <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                 onClick={() => setShowPreview(!showPreview)}

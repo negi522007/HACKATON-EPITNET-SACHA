@@ -18,7 +18,7 @@ export default function Home() {
   const { screen } = useAppStore();
 
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="min-h-screen bg-background text-foreground" style={{ minHeight: '100vh' }}>
       <AnimatePresence mode="wait">
         {screen === 'landing' && (
           <motion.div key="landing" variants={pageVariants} initial="initial" animate="animate" exit="exit" transition={pageTransition}>

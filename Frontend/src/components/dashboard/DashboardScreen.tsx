@@ -35,23 +35,23 @@ function DashboardBackground({ isDark }: { isDark: boolean }) {
         <>
           <div
             className="absolute w-[600px] h-[600px] rounded-full"
-            style={{ top: '-15%', left: '-10%', background: 'radial-gradient(circle, rgba(252,211,77,0.35) 0%, transparent 70%)', filter: 'blur(100px)' }}
+            style={{ top: '-15%', left: '-10%', background: 'radial-gradient(circle, rgba(252,211,77,0.45) 0%, transparent 70%)', filter: 'blur(100px)' }}
           />
           <div
             className="absolute w-[500px] h-[500px] rounded-full"
-            style={{ top: '40%', right: '-10%', background: 'radial-gradient(circle, rgba(245,158,11,0.25) 0%, transparent 70%)', filter: 'blur(100px)' }}
+            style={{ top: '40%', right: '-10%', background: 'radial-gradient(circle, rgba(245,158,11,0.35) 0%, transparent 70%)', filter: 'blur(100px)' }}
           />
           <div
             className="absolute w-[500px] h-[500px] rounded-full"
-            style={{ bottom: '-15%', left: '25%', background: 'radial-gradient(circle, rgba(217,119,6,0.20) 0%, transparent 70%)', filter: 'blur(90px)' }}
+            style={{ bottom: '-15%', left: '25%', background: 'radial-gradient(circle, rgba(217,119,6,0.30) 0%, transparent 70%)', filter: 'blur(90px)' }}
           />
           <div
             className="absolute w-[350px] h-[350px] rounded-full"
-            style={{ top: '20%', left: '50%', background: 'radial-gradient(circle, rgba(251,191,36,0.20) 0%, transparent 70%)', filter: 'blur(80px)' }}
+            style={{ top: '20%', left: '50%', background: 'radial-gradient(circle, rgba(251,191,36,0.30) 0%, transparent 70%)', filter: 'blur(80px)' }}
           />
           <div
             className="absolute w-[300px] h-[300px] rounded-full"
-            style={{ top: '60%', left: '10%', background: 'radial-gradient(circle, rgba(255,255,255,0.5) 0%, transparent 70%)', filter: 'blur(70px)' }}
+            style={{ top: '60%', left: '10%', background: 'radial-gradient(circle, rgba(245,158,11,0.25) 0%, transparent 70%)', filter: 'blur(70px)' }}
           />
         </>
       )}

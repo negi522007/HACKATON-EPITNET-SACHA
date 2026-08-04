@@ -50,17 +50,17 @@
 @layer base {
   :root {
     --radius: 0.75rem;
-    --background: #FFFBF5;
+    --background: #FFF7ED;
     --foreground: #1A1A1A;
-    --card: #FFFFFF;
+    --card: #FFFBF5;
     --card-foreground: #1A1A1A;
-    --popover: #FFFFFF;
+    --popover: #FFFBF5;
     --popover-foreground: #1A1A1A;
     --primary: #F59E0B;
     --primary-foreground: #FFFFFF;
-    --secondary: #FFF7ED;
+    --secondary: #FEF3C7;
     --secondary-foreground: #92400E;
-    --muted: #F5F0EB;
+    --muted: #FDE68A;
     --muted-foreground: #78716C;
     --accent: #FFF7ED;
     --accent-foreground: #92400E;
@@ -73,7 +73,7 @@
     --chart-3: #FBBF24;
     --chart-4: #B45309;
     --chart-5: #FCD34D;
-    --sidebar: #FFF8F0;
+    --sidebar: #FFF7ED;
     --sidebar-foreground: #1A1A1A;
     --sidebar-primary: #F59E0B;
     --sidebar-primary-foreground: #FFFFFF;
@@ -136,7 +136,7 @@
 
 /* ===== GLASS CARD ===== */
 .glass {
-  background: rgba(255,255,255,0.8);
+  background: rgba(255,247,237,0.8);
   border: 1px solid var(--border);
   backdrop-filter: blur(12px);
 }
