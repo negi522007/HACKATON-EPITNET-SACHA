@@ -1,0 +1,34 @@
+{
+  "business_name": "Boulangerie de Marie",
+  "sector": "artisanal_bakery",
+  "short_description": "Boulangerie artisanale proposant des produits traditionnels et sur commande à Cotonou.",
+  "brand_tone": "warm",
+  "location": "Cotonou",
+  "required_sections": [
+    "hero",
+    "about",
+    "services",
+    "gallery",
+    "contact"
+  ],
+  "content": {
+    "hero_tagline": "Le goût de la tradition, fait main avec amour",
+    "long_description": "Découvrez notre sélection de pains traditionnels, viennoiseries et gâteaux préparés avec soin et amour. Nous proposons également des commandes sur mesure pour répondre à vos besoins spécifiques. Notre boulangerie artisanale à Cotonou est là pour vous régaler.",
+    "services_or_products": [
+      "Pain traditionnel",
+      "Viennoiseries",
+      "Gâteaux sur commande"
+    ],
+    "contact": {
+      "phone": null,
+      "email": null,
+      "address": "Cotonou"
+    }
+  },
+  "visual_hints": {
+    "mentioned_colors": [
+      "terracotta"
+    ],
+    "mentioned_style": "chaleureux"
+  }
+}

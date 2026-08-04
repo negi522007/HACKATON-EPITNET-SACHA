@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+sessions/*.json
+!sessions/.gitkeep
+tests/fixtures/*.output.json
+output/
+*.log
+output/
+!output/.gitkeep

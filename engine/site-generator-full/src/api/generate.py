@@ -1,12 +1,8 @@
 """
 ORCHESTRATEUR — point d'entrée unique pour l'équipe plateforme.
 
-Couvre les étapes 1 (extraction) et 2 (direction artistique) de bout en bout :
-reçoit le besoin brut de l'utilisateur, retourne 3 variantes de direction artistique
-prêtes à être affichées (avec preview), et persiste l'état de la session.
-
-L'étape 3 (composition, en Python également) prendra ensuite le relais à partir de
-la session sauvegardée, une fois la variante choisie par l'utilisateur.
+Couvre le pipeline complet : extraction (1), direction artistique (2),
+composition (3) et critique (4). Persiste l'état de la session à chaque étape.
 """
 
 import json
@@ -16,6 +12,8 @@ from pathlib import Path
 
 from src.pipeline.step1_extraction import extract_need
 from src.pipeline.step2_art_direction import generate_art_direction
+from src.pipeline.step4_critique import review_and_fix
+from src.pipeline.export import export_site
 
 SESSIONS_DIR = Path(__file__).resolve().parent.parent.parent / "sessions"
 
@@ -87,6 +85,50 @@ def select_variant(session_id: str, variant_id: str) -> dict:
 def get_session(session_id: str) -> dict:
     """Récupère une session existante (utile pour la plateforme comme pour l'étape 3)."""
     return _load_session(session_id)
+
+
+def run_composition(session_id: str) -> dict:
+    """
+    Lance les étapes 3 (composition) et 4 (critique) pour une session dont
+    l'utilisateur a déjà choisi une variante (status == "ready_for_composition").
+
+    :param session_id: identifiant de session
+    :return: {
+        "html": str,
+        "zip_path": str,
+        "skipped_sections": [str],   # sections demandées mais non générées, voir step3_composition.py
+        "signals_history": [str],    # signaux "générique" détectés et corrigés par la critique
+    }
+    :raises ValueError: si la session n'est pas prête pour la composition
+    """
+    session = _load_session(session_id)
+
+    if session["status"] != "ready_for_composition":
+        raise ValueError(
+            f'Session non prête pour la composition (status actuel : "{session["status"]}"). '
+            f"Appelle select_variant() d'abord."
+        )
+
+    variant = next(v for v in session["variants"] if v["id"] == session["selected_variant_id"])
+
+    result = review_and_fix(session["business_need"], variant)
+
+    export_result = export_site(session_id, result["html"])
+
+    session["status"] = "completed"
+    session["business_need"] = result["business_need"]  # peut avoir été patché par la critique
+    session["skipped_sections"] = result["skipped_sections"]
+    session["signals_history"] = result["signals_history"]
+    session["output_zip_path"] = export_result["zip_path"]
+    session["output_site_dir"] = export_result["site_dir"]
+    _save_session(session)
+
+    return {
+        "html": result["html"],
+        "zip_path": export_result["zip_path"],
+        "skipped_sections": result["skipped_sections"],
+        "signals_history": result["signals_history"],
+    }
 
 
 # --- Persistance (fichier JSON par session, cf. décision architecture J1) ---
