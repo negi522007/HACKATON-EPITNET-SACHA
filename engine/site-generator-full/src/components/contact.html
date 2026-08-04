@@ -1,0 +1,8 @@
+<section id="contact" class="contact">
+  <h2>{{ title }}</h2>
+  <dl>
+    {% if phone %}<dt>Téléphone</dt><dd>{{ phone }}</dd>{% endif %}
+    {% if email %}<dt>E-mail</dt><dd>{{ email }}</dd>{% endif %}
+    {% if address %}<dt>Adresse</dt><dd>{{ address }}</dd>{% endif %}
+  </dl>
+</section>

@@ -1,0 +1,100 @@
+{
+  "businessNeed": {
+    "business_name": "Boulangerie de Marie",
+    "sector": "artisanal_bakery",
+    "short_description": "Boulangerie artisanale proposant du pain traditionnel, des viennoiseries et des gâteaux sur commande.",
+    "brand_tone": "warm",
+    "location": "Cotonou",
+    "required_sections": [
+      "hero",
+      "about",
+      "services",
+      "gallery",
+      "contact"
+    ],
+    "content": {
+      "hero_tagline": "Le goût de la tradition, fait main avec amour",
+      "long_description": "Découvrez notre sélection de pains traditionnels, viennoiseries et gâteaux, tous préparés avec soin et amour. Nous proposons également des commandes sur mesure pour répondre à vos envies. Notre boulangerie artisanale est là pour vous régaler.",
+      "services_or_products": [
+        "Pain traditionnel",
+        "Viennoiseries",
+        "Gâteaux sur commande"
+      ],
+      "contact": {
+        "phone": null,
+        "email": null,
+        "address": "Cotonou"
+      }
+    },
+    "visual_hints": {
+      "mentioned_colors": [
+        "terracotta"
+      ],
+      "mentioned_style": "chaleureux"
+    }
+  },
+  "variants": [
+    {
+      "id": "variant_1",
+      "label": "Tradition Chaleureuse",
+      "rationale": "Une palette terracotta et crème qui évoque la chaleur du fournil et l'authenticité du pain fait main.",
+      "color_palette": {
+        "primary": "#C05C3E",
+        "secondary": "#F4EAE1",
+        "accent": "#E09F3E",
+        "background": "#FAF6F0",
+        "text": "#2B1B17"
+      },
+      "typography": {
+        "heading_font": "Fraunces",
+        "body_font": "Inter"
+      },
+      "mood": "organic_warm",
+      "layout_style": "asymmetric_editorial",
+      "hero_variant": "hero-split",
+      "spacing_scale": "comfortable"
+    },
+    {
+      "id": "variant_2",
+      "label": "Élégance Gourmande",
+      "rationale": "Un style minimaliste et raffiné qui met en valeur la délicatesse de vos gâteaux sur commande comme des pièces uniques.",
+      "color_palette": {
+        "primary": "#4E3629",
+        "secondary": "#D4C5B9",
+        "accent": "#C5A059",
+        "background": "#FDFDFB",
+        "text": "#1C120C"
+      },
+      "typography": {
+        "heading_font": "Libre Caslon Display",
+        "body_font": "Karla"
+      },
+      "mood": "minimalist_luxury",
+      "layout_style": "centered_classic",
+      "hero_variant": "hero-centered",
+      "spacing_scale": "generous"
+    },
+    {
+      "id": "variant_3",
+      "label": "Créatif & Solaire",
+      "rationale": "Une direction moderne et vibrante qui célèbre le dynamisme de Cotonou à travers des contrastes audacieux et gourmands.",
+      "color_palette": {
+        "primary": "#D9381E",
+        "secondary": "#FCEBCC",
+        "accent": "#1E5128",
+        "background": "#FFFDF9",
+        "text": "#1A1A1A"
+      },
+      "typography": {
+        "heading_font": "Bricolage Grotesque",
+        "body_font": "Work Sans"
+      },
+      "mood": "bold_modern",
+      "layout_style": "grid_structured",
+      "hero_variant": "hero-fullscreen",
+      "spacing_scale": "comfortable"
+    }
+  ],
+  "image_influence": null,
+  "logo": null
+}
