@@ -207,7 +207,6 @@ const translations: Record<Lang, Record<string, string>> = {
     'art.cool': 'Cool',
     'art.vibrant': 'Vibrant',
     'art.muted': 'Adouci',
-    'art.muted': 'Muted',
     'art.modern': 'Modern',
     'art.classic': 'Classic',
     'art.handwritten': 'Handwritten',

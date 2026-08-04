@@ -1,2 +1,4 @@
 .env
 site-generator-python.zip
+node_modules
+package-lock.json

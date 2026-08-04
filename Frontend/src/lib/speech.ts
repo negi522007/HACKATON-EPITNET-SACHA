@@ -1,18 +1,27 @@
-let recognition: SpeechRecognition | null = null;
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+declare global {
+  interface Window {
+    SpeechRecognition: any;
+    webkitSpeechRecognition: any;
+  }
+}
+
+let recognition: any = null;
 let analyser: AnalyserNode | null = null;
 let audioContext: AudioContext | null = null;
 let mediaStream: MediaStream | null = null;
 
-export function getSpeechRecognition(onResult: (text: string, isFinal: boolean) => void, onEnd: () => void, onError: (e: string) => void, lang = 'fr-FR'): SpeechRecognition | null {
-  const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-  if (!SpeechRecognition) return null;
+export function getSpeechRecognition(onResult: (text: string, isFinal: boolean) => void, onEnd: () => void, onError: (e: string) => void, lang = 'fr-FR'): any {
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) return null;
 
-  recognition = new SpeechRecognition();
+  recognition = new SR();
   recognition.lang = lang;
   recognition.continuous = true;
   recognition.interimResults = true;
 
-  recognition.onresult = (event: SpeechRecognitionEvent) => {
+  recognition.onresult = (event: any) => {
     let interimTranscript = '';
     let finalTranscript = '';
     for (let i = event.resultIndex; i < event.results.length; i++) {
@@ -28,7 +37,7 @@ export function getSpeechRecognition(onResult: (text: string, isFinal: boolean) 
   };
 
   recognition.onend = onEnd;
-  recognition.onerror = (event) => {
+  recognition.onerror = (event: any) => {
     onError(event.error);
     onEnd();
   };
